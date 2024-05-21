@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AddEditProjectComponent } from './add-edit-project/add-edit-project.component';
 import { LayoutComponent } from 'src/app/shared/layout/layout.component';
+import { DashboardHomeComponent } from './dashboard-home/dashboard-home.component';
 
 const routes: Routes = [
   {
     path: '',
-    title: 'Vertex PMS - Cadastrar Projeto',
     component: LayoutComponent,
-    children: [{ path: '', component: AddEditProjectComponent }],
+    title: 'Dashboard',
+    children: [{ path: '', component: DashboardHomeComponent }],
   },
 ];
+
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ProjectRoutingModule {}
+export class DashboardRoutingModule {}

@@ -3,14 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
-    path: 'customization',
+    path: 'dashboard',
     loadChildren: () =>
-      import('./features/project/project.module').then((m) => m.ProjectModule),
+      import('./features/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
   },
   {
-    path: '**',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    path: 'aluno',
+    loadChildren: () =>
+      import('./features/aluno/aluno.module').then((m) => m.AlunoModule),
+  },
+  {
+    path: 'disciplina',
+    loadChildren: () =>
+      import('./features/disciplina/disciplina.module').then(
+        (m) => m.DisciplinaModule
+      ),
   },
 ];
 

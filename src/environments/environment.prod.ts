@@ -4,5 +4,7 @@ export const environment = {
   HEADER: { 'Content-Type': 'application/json' },
 
   URL_API: 'http://localhost:8080/api',
-  API_PROJECT: '/projeto',
+  API_ALUNO: '/aluno',
+  API_DISCIPLINA: '/disciplina',
+  API_MATRICULA: '/matricula',
 };

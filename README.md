@@ -1,19 +1,16 @@
-# VERTEX PMS
+# Hands on Work VI
 
-<img src=".../../src/assets/telainicial.png" alt="tela-inicial">
+<img src=".../../src/assets/tela-inicial.png" alt="tela-inicial">
 
 > Tela Inicial do Sistema.
 
 ### Descrição do Projeto
 
-Sistema web para o cadastro de projetos de um Microempreendedor individual (MEI)
-
+Sistema web para cadastro, edição e deleção de alunos e disciplinas e realização de matrícula
 
 ## 💻 Pré-requisitos
 
 Antes de começar, verifique se você atende aos seguintes requisitos:
-
-<!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
 
 - Você possui a versão mais recente do `Angular 16.1.0` instalado.
 
@@ -26,7 +23,6 @@ Certifique-se que o MySQL esteja em executação na sua máquina.
 Executar a API REST desenvolvida em Java e Spring.
 Lembrando que por padrão a API vai funcionar no endereço: http://localhost:8080.
 ```
-
 
 ### Inicialização do Aplicativo
 

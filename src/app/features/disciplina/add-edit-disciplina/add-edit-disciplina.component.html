@@ -1,0 +1,103 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-content>
+      <mat-card-title> Cadastro de Disciplina </mat-card-title>
+      <div fxLayout="column">
+        <form [formGroup]="formExistingDisciplina">
+          <mat-form-field
+            *ngIf="disciplinas.length > 0"
+            class="full-width"
+            appearance="outline"
+          >
+            <mat-label>Selecione uma Disciplina</mat-label>
+            <mat-select (focus)="onFocus()" formControlName="edit_informacoes">
+              <mat-option
+                *ngFor="let disciplina of disciplinas"
+                [value]="disciplina.id"
+              >
+                {{ disciplina.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </form>
+
+        <form [formGroup]="formDisciplina" (ngSubmit)="onSubmit()">
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input
+              (focus)="onFocus()"
+              matInput
+              placeholder="Nome"
+              formControlName="nome"
+            />
+
+            <mat-error id="requiredNomeError">
+              O nome da disciplina é
+              <strong>obrigatória!</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Descrição</mat-label>
+            <input
+              (focus)="onFocus()"
+              matInput
+              placeholder="Descrição"
+              formControlName="descricao"
+            />
+
+            <mat-error id="requiredDescriptionError">
+              A descrição da disciplina é
+              <strong>obrigatória!</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Carga Horária</mat-label>
+            <input
+              (focus)="onFocus()"
+              matInput
+              type="number"
+              placeholder="Carga Horária"
+              formControlName="cargaHoraria"
+            />
+
+            <mat-error id="requiredWorkloadError">
+              A carga horária da disciplina é
+              <strong>obrigatória!</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div fxLayoutAlign="center center" fxLayoutGap="5px">
+            <button
+              mat-raised-button
+              color="primary"
+              id="cadastrar"
+              [disabled]="isEditing"
+              type="submit"
+            >
+              CADASTRAR
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              id="editar"
+              [disabled]="isDisabled"
+              (click)="editDisciplina()"
+            >
+              EDITAR
+            </button>
+            <button
+              mat-raised-button
+              [disabled]="isDisabled"
+              color="accent"
+              (click)="deleteDisciplina()"
+            >
+              DELETAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

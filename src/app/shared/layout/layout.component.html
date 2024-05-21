@@ -1,64 +1,106 @@
 <div class="navbar-container" [class.example-is-mobile]="mobileQuery.matches">
-
   <!-- Top navbar -->
   <mat-toolbar class="navbar" color="primary">
-
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
 
     <a class="navbar-brand" [routerLink]="['/']" matTooltip="Home">
-      <h1>
-        VERTEX PMS
-      </h1>
+      <h1>Hands on Work VI</h1>
     </a>
 
     <span class="navbar-spacer"></span>
-
   </mat-toolbar>
 
   <mat-sidenav-container class="navbar-sidenav-container">
     <!-- Side nav -->
-    <mat-sidenav #snav [opened]="!mobileQuery.matches" [mode]="mobileQuery.matches ? 'over' : 'side'"
-      [fixedInViewport]="mobileQuery.matches" fixedTopGap="56" class="sidenav">
-
+    <mat-sidenav
+      #snav
+      [opened]="!mobileQuery.matches"
+      [mode]="mobileQuery.matches ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56"
+      class="sidenav"
+    >
       <mat-nav-list>
-        <h3 mat-subheader>Home</h3>
-
-        <a mat-list-item [routerLink]="['/dashboard']" routerLinkActive="active">
+        <a
+          mat-list-item
+          [routerLink]="['/dashboard']"
+          routerLinkActive="active"
+        >
           <p mat-line>
-          <mat-icon mat-list-icon>
-            dashboard
-          </mat-icon>
-         Dashboard </p>
+            <mat-icon mat-list-icon> dashboard </mat-icon>
+            Dashboard
+          </p>
         </a>
 
-        <a mat-list-item [routerLink]="['/project']" routerLinkActive="active">
+        <mat-divider></mat-divider>
+
+        <a mat-list-item [routerLink]="['/aluno']" routerLinkActive="active">
           <p mat-line>
-          <mat-icon mat-list-icon>
-            account_balance
-          </mat-icon>
-         Empresa </p>
+            <mat-icon mat-list-icon> person_add </mat-icon>
+            Cadastrar alunos
+          </p>
         </a>
 
-       <mat-divider></mat-divider>
+        <a mat-list-item [routerLink]="['/aluno/listar']" routerLinkActive="active">
+          <p mat-line>
+            <mat-icon mat-list-icon> person_search </mat-icon>
+            Listar alunos
+          </p>
+        </a>
 
+        <mat-divider></mat-divider>
+
+        <a
+          mat-list-item
+          [routerLink]="['/disciplina']"
+          routerLinkActive="active"
+        >
+          <p mat-line>
+            <mat-icon mat-list-icon> note_add </mat-icon>
+            Cadastrar disciplinas
+          </p>
+        </a>
+
+        <a
+          mat-list-item
+          [routerLink]="['/disciplina/listar']"
+          routerLinkActive="active"
+        >
+          <p mat-line>
+            <mat-icon mat-list-icon> plagiarism </mat-icon>
+            Listar disciplinas
+          </p>
+        </a>
+
+        <mat-divider></mat-divider>
+
+        <a
+          mat-list-item
+          [routerLink]="['/matricula']"
+          routerLinkActive="active"
+        >
+          <p mat-line>
+            <mat-icon mat-list-icon> add_task </mat-icon>
+            Efetuar matrícula
+          </p>
+        </a>
       </mat-nav-list>
-
     </mat-sidenav>
 
     <!-- Main content -->
     <mat-sidenav-content class="sidenav-content">
-
       <div class="progress-bar-container">
-        <mat-progress-bar color="accent" mode="indeterminate" *ngIf="loadingService.visibility | async">
+        <mat-progress-bar
+          color="accent"
+          mode="indeterminate"
+          *ngIf="loadingService.visibility | async"
+        >
         </mat-progress-bar>
       </div>
 
-
       <router-outlet></router-outlet>
-
     </mat-sidenav-content>
   </mat-sidenav-container>
-
 </div>

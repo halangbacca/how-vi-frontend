@@ -4,16 +4,15 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
 import { catchError, Observable, retry, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Project } from '../../models/Project';
+import { Aluno } from '../../models/Aluno';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ProjectService {
-  url = `${environment.URL_API}${environment.API_PROJECT}`;
+export class AlunoService {
+  url = `${environment.URL_API}${environment.API_ALUNO}`;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -21,27 +20,27 @@ export class ProjectService {
     headers: new HttpHeaders(environment.HEADER),
   };
 
-  getProject(): Observable<Project[]> {
+  getAluno(): Observable<Aluno[]> {
     return this.httpClient
-      .get<Project[]>(this.url, this.httpOptions)
+      .get<Aluno[]>(this.url, this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  saveProject(project: Project): Observable<Project[]> {
+  saveAluno(aluno: Aluno): Observable<Aluno[]> {
     return this.httpClient
-      .post<Project[]>(this.url, JSON.stringify(project), this.httpOptions)
+      .post<Aluno[]>(this.url, JSON.stringify(aluno), this.httpOptions)
       .pipe(retry(2), catchError(this.handleError));
   }
 
-  deleteProject(id: Number): Observable<Project> {
-    return this.httpClient.delete<Project>(`${this.url}/${id}`);
+  deleteAluno(id: Number): Observable<Aluno> {
+    return this.httpClient.delete<Aluno>(`${this.url}/${id}`);
   }
 
-  updateProject(project: Project): Observable<Project[]> {
+  updateAluno(aluno: Aluno): Observable<Aluno[]> {
     return this.httpClient
-      .put<Project[]>(
-        `${this.url}/${project.id}`,
-        JSON.stringify(project),
+      .put<Aluno[]>(
+        `${this.url}/${aluno.id}`,
+        JSON.stringify(aluno),
         this.httpOptions
       )
       .pipe(retry(2), catchError(this.handleError));

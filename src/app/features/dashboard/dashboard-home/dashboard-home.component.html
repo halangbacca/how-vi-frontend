@@ -1,0 +1,65 @@
+<mat-card class="card">
+  <mat-card-content>
+    <mat-card-title> Estatísticas e Informações </mat-card-title>
+    <div id="barchart_material"></div>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card">
+  <mat-card-content>
+    <mat-card-title> Pesquisa de aluno </mat-card-title>
+    <mat-form-field appearance="fill" class="pesquisa-aluno">
+      <mat-label>Pesquise um aluno...</mat-label>
+      <input
+        matInput
+        placeholder="Digite o nome ou o CPF do aluno"
+        (input)="searchAluno($event)"
+        name="nome"
+      />
+    </mat-form-field>
+    <mat-card *ngFor="let aluno of filteredAlunos" class="alunos">
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Nome: {{ aluno.nome }}</mat-card-title>
+          <mat-card-subtitle>Data de nascimento: {{ aluno.dataNascimento }}</mat-card-subtitle>
+          <mat-card-subtitle>CPF: {{ aluno.cpf }}</mat-card-subtitle>
+          <img
+            mat-card-lg-image
+            src="https://cdn-icons-png.freepik.com/512/3884/3884891.png"
+          />
+        </mat-card-title-group>
+      </mat-card-header>
+    </mat-card>
+  </mat-card-content>
+</mat-card>
+
+<mat-card class="card">
+  <mat-card-content>
+    <mat-card-title> Pesquisa de disciplina </mat-card-title>
+    <mat-form-field appearance="fill" class="pesquisa-disciplina">
+      <mat-label>Pesquise uma disciplina...</mat-label>
+      <input
+        matInput
+        placeholder="Digite o nome, descrição ou a carga horária da disciplina"
+        (input)="searchDisciplina($event)"
+        name="nome"
+      />
+    </mat-form-field>
+    <mat-card
+      *ngFor="let disciplina of filteredDisciplinas"
+      class="disciplinas"
+    >
+      <mat-card-header>
+        <mat-card-title-group>
+          <mat-card-title>Nome: {{ disciplina.nome }}</mat-card-title>
+          <mat-card-subtitle>Descrição: {{ disciplina.descricao }}</mat-card-subtitle>
+          <mat-card-subtitle>Carga horária: {{ disciplina.cargaHoraria }}</mat-card-subtitle>
+          <img
+            mat-card-lg-image
+            src="https://cdn-icons-png.freepik.com/512/4013/4013275.png"
+          />
+        </mat-card-title-group>
+      </mat-card-header>
+    </mat-card>
+  </mat-card-content>
+</mat-card>
