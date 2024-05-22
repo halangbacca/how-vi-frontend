@@ -21,6 +21,18 @@ const routes: Routes = [
         (m) => m.DisciplinaModule
       ),
   },
+  {
+    path: 'matricula',
+    loadChildren: () =>
+      import('./features/matricula/matricula.module').then(
+        (m) => m.MatriculaModule
+      ),
+  },
+  {
+    path: '**',
+    redirectTo: 'dashboard',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

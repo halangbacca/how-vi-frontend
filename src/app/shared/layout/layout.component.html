@@ -43,7 +43,11 @@
           </p>
         </a>
 
-        <a mat-list-item [routerLink]="['/aluno/listar']" routerLinkActive="active">
+        <a
+          mat-list-item
+          [routerLink]="['/aluno/listar']"
+          routerLinkActive="active"
+        >
           <p mat-line>
             <mat-icon mat-list-icon> person_search </mat-icon>
             Listar alunos
@@ -84,6 +88,17 @@
           <p mat-line>
             <mat-icon mat-list-icon> add_task </mat-icon>
             Efetuar matrícula
+          </p>
+        </a>
+
+        <a
+          mat-list-item
+          [routerLink]="['/matricula/listar']"
+          routerLinkActive="active"
+        >
+          <p mat-line>
+            <mat-icon mat-list-icon> list_task </mat-icon>
+            Listar matrículas
           </p>
         </a>
       </mat-nav-list>

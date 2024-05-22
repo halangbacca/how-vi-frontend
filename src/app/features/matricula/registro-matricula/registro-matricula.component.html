@@ -1,0 +1,61 @@
+<div class="container" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="card">
+    <mat-card-content
+      *ngIf="alunos.length > 0 && disciplinas.length > 0; else noMatriculas"
+    >
+      <mat-card-title> Efetuar matrícula </mat-card-title>
+      <div fxLayout="column">
+        <form [formGroup]="formExistingData" (ngSubmit)="onSubmit()">
+          <mat-form-field
+            *ngIf="disciplinas.length > 0"
+            class="full-width"
+            appearance="outline"
+          >
+            <mat-label>Selecione uma Disciplina</mat-label>
+            <mat-select (focus)="onFocus()" formControlName="disciplinaFk">
+              <mat-option
+                *ngFor="let disciplina of disciplinas"
+                [value]="disciplina.id"
+              >
+                {{ disciplina.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field
+            *ngIf="alunos.length > 0"
+            class="full-width"
+            appearance="outline"
+          >
+            <mat-label>Selecione um Aluno</mat-label>
+            <mat-select (focus)="onFocus()" formControlName="alunoFk">
+              <mat-option *ngFor="let aluno of alunos" [value]="aluno.id">
+                {{ aluno.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div fxLayoutAlign="center center" fxLayoutGap="5px">
+            <button
+              mat-raised-button
+              color="primary"
+              id="cadastrar"
+              type="submit"
+            >
+              MATRICULAR
+            </button>
+          </div>
+        </form>
+      </div>
+    </mat-card-content>
+
+    <ng-template #noMatriculas>
+      <div class="noMatriculas">
+        <p>
+          Não é possível efetuar matrícula, não há alunos e/ou disciplinas
+          cadastradas!
+        </p>
+      </div>
+    </ng-template>
+  </mat-card>
+</div>

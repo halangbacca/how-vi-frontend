@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { Aluno } from 'src/app/shared/models/Aluno';
 import { Disciplina } from 'src/app/shared/models/Disciplina';
+import { Matricula } from 'src/app/shared/models/Matricula';
 import { AlunoService } from 'src/app/shared/services/aluno/aluno.service';
 import { DisciplinaService } from 'src/app/shared/services/disciplina/disciplina.service';
+import { MatriculaService } from 'src/app/shared/services/matricula/matricula.service';
 declare var google: any;
 
 @Component({
@@ -13,16 +15,19 @@ declare var google: any;
 export class DashboardHomeComponent {
   alunos = [] as Aluno[];
   disciplinas = [] as Disciplina[];
+  matriculas = [] as Matricula[];
 
   filteredAlunos = [] as Aluno[];
   filteredDisciplinas = [] as Disciplina[];
 
   qtAlunos: number = 0;
   qtDisciplinas: number = 0;
+  qtdMatriculas: number = 0;
 
   constructor(
     private alunoService: AlunoService,
-    private disciplinaService: DisciplinaService
+    private disciplinaService: DisciplinaService,
+    private matriculaService: MatriculaService
   ) {}
 
   ngOnInit() {
@@ -38,11 +43,15 @@ export class DashboardHomeComponent {
       this.qtDisciplinas = disciplina.length;
     });
 
+    this.matriculaService.getMatricula().subscribe((matricula) => {
+      this.qtdMatriculas = matricula.length;
+    });
+
     google.charts.load('current', { packages: ['bar'] });
     google.charts.setOnLoadCallback(() => {
       var data = google.visualization.arrayToDataTable([
-        ['', 'Alunos', 'Disciplinas'],
-        ['Estatísticas', this.qtAlunos, this.qtDisciplinas],
+        ['', 'Alunos', 'Disciplinas', 'Matrículas'],
+        ['Estatísticas', this.qtAlunos, this.qtDisciplinas, this.qtdMatriculas],
       ]);
 
       var options = {
